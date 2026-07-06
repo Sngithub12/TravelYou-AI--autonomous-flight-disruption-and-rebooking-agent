@@ -1,8 +1,8 @@
-# TripMind AI
+# TravelYou AI
 
 Autonomous flight disruption and rebooking agent prototype.
 
-TripMind AI monitors a disrupted itinerary, reasons about passenger impact, searches replacement flights through tool modules, selects the best itinerary, and generates a customer notification.
+TravelYou AI monitors a disrupted itinerary, reasons about passenger impact, searches replacement flights through tool modules, selects the best itinerary, and generates a customer notification.
 
 ## Run locally
 
@@ -32,3 +32,4 @@ USE_LLM_NOTIFICATIONS=true
 ```
 
 The OpenRouter wrapper is in `llm/openrouter.py`.
+Here the video of project:https://www.loom.com/share/d594130e70ea482d89190d3390dc052d
