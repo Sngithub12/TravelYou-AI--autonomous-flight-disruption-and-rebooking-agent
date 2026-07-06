@@ -160,7 +160,7 @@ class TripMindOrchestrator:
                    {"service_recovery": service_recovery, "notification": notification})
         self._log("final", "Agent decision", notification)
 
-        log_event("TripMind agent completed disruption workflow", {"selected": selected})
+        log_event("TravelYou agent completed disruption workflow", {"selected": selected})
 
         return {
             "scenario": scenario,
