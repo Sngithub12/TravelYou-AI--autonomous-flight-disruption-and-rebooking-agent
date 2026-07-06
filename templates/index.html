@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TripMind AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-band">
+        <div class="hero-copy">
+          <p class="eyebrow">Autonomous flight disruption agent</p>
+          <h1>TripMind AI</h1>
+          <p class="hero-text">Simulate a disruption, let the agent evaluate passenger impact, then watch it rank replacement flights and prepare the recovery message.</p>
+        </div>
+        <div class="flight-board" aria-label="Current disruption board">
+          <div class="board-row board-head">
+            <span>PNR</span>
+            <span>Route</span>
+            <span>Status</span>
+          </div>
+          <div class="board-row">
+  		<strong>{{ bookings|length }} bookings</strong>
+  		<strong>Live routes</strong>
+  		<strong>Watchlist</strong>
+	  </div>
+          <div class="radar-card">
+            <span class="radar-ring"></span>
+            <div>
+              <small>Agent readiness</small>
+              <strong>Tools online</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <form action="{{ url_for('run_agent') }}" method="post" 
+      onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').innerText='Running…';">
+      <section class="panel control-panel" style="grid-column: 1 / -1;"></section>
+          <div class="panel-header">
+            <span>Simulator</span>
+            <strong>Choose disruption</strong>
+          </div>
+          <div class="scenario-grid">
+            {% for scenario in scenarios %}
+              <label class="scenario-card">
+                <input type="radio" name="scenario" value="{{ scenario.id }}" {% if loop.first %}checked{% endif %}>
+                <span>
+                  <strong>{{ scenario.name }}</strong>
+                  <small>{{ scenario.summary }}</small>
+                </span>
+              </label>
+            {% endfor %}
+          </div>
+          <div class="panel-header" style="margin-top: 20px;">
+  		<span>Passenger</span>
+  		<strong>Choose booking</strong>
+	  </div>
+	  <div class="scenario-grid">
+  		{% for b in bookings %}
+    	   <label class="scenario-card">
+      	   <input type="radio" name="booking_id" value="{{ b.booking_id }}" {% if b.booking_id == booking.booking_id %}checked{% endif %}>
+           <span>
+           <strong>{{ b.passenger.name }}</strong>
+           <small>{{ b.origin }} → {{ b.destination }} · {{ b.passenger.loyalty_tier }}</small>
+           <small>{{ b.risk_preview.label }}</small>
+           </span>
+          </label>
+          {% endfor %}
+         </div>
+	  </select>
+          
+          <button class="primary-button" type="submit">Run agent simulation</button>
+        </section>
+
+        
+      </form>
+
+      <section class="panel">
+        <div class="panel-header">
+          <span>Agent loop</span>
+          <strong>Monitor, reason, act</strong>
+        </div>
+        <ol class="tool-timeline">
+          <li><span>01</span><strong>Monitor</strong><small>Read flight status and disruption event.</small></li>
+          <li><span>02</span><strong>Reason</strong><small>Calculate connection risk and passenger impact.</small></li>
+          <li><span>03</span><strong>Search</strong><small>Query replacement itinerary availability.</small></li>
+          <li><span>04</span><strong>Decide</strong><small>Rank options by timing, policy, cost, and comfort.</small></li>
+          <li><span>05</span><strong>Notify</strong><small>Prepare customer-facing recovery message.</small></li>
+        </ol>
+        
+      </section>
+    </main>
+  </body>
+</html>

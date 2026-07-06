@@ -1,0 +1,18 @@
+{
+  "booking_id": "TM-48291",
+  "flight_number": "AI-214",
+  "origin": "JFK",
+  "destination": "LHR",
+  "date": "2026-07-08",
+  "departure_time": "2026-07-08T18:10:00",
+  "arrival_time": "2026-07-09T06:20:00",
+  "connection_departure": "2026-07-09T08:05:00",
+  "minimum_connection_minutes": 75,
+  "passenger": {
+    "name": "Maya Rao",
+    "loyalty_tier": "Gold",
+    "preferred_airline": "British Airways",
+    "seat_preference": "aisle",
+    "latest_acceptable_arrival": "2026-07-09T10:30:00"
+  }
+}

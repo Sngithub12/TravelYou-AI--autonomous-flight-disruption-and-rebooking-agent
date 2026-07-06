@@ -1,0 +1,176 @@
+{
+  "TM-81482": {
+    "booking_id": "TM-81482",
+    "flight_number": "NA-381",
+    "origin": "AMS",
+    "destination": "YYZ",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T13:15:00",
+    "arrival_time": "2026-07-08T17:55:00",
+    "passenger": {
+      "name": "Allison Hill",
+      "loyalty_tier": "Silver",
+      "preferred_airline": "Al-Naser Airlines",
+      "seat_preference": "middle",
+      "latest_acceptable_arrival": "2026-07-09T12:55:00"
+    }
+  },
+  "TM-80284": {
+    "booking_id": "TM-80284",
+    "flight_number": "XT-467",
+    "origin": "LHR",
+    "destination": "NRT",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T17:30:00",
+    "arrival_time": "2026-07-09T07:30:00",
+    "passenger": {
+      "name": "Noah Rhodes",
+      "loyalty_tier": "Silver",
+      "preferred_airline": "Air Exel",
+      "seat_preference": "window",
+      "latest_acceptable_arrival": "2026-07-09T15:30:00"
+    },
+    "connection_departure": "2026-07-09T10:00:00",
+    "minimum_connection_minutes": 60
+  },
+  "TM-17331": {
+    "booking_id": "TM-17331",
+    "flight_number": "OX-488",
+    "origin": "HKG",
+    "destination": "LHR",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T14:15:00",
+    "arrival_time": "2026-07-09T02:35:00",
+    "passenger": {
+      "name": "Angie Henderson",
+      "loyalty_tier": "Silver",
+      "preferred_airline": "Orient Thai Airlines",
+      "seat_preference": "aisle",
+      "latest_acceptable_arrival": "2026-07-09T18:35:00"
+    },
+    "connection_departure": "2026-07-09T04:05:00",
+    "minimum_connection_minutes": 60
+  },
+  "TM-65333": {
+    "booking_id": "TM-65333",
+    "flight_number": "S2-981",
+    "origin": "LHR",
+    "destination": "MIA",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T09:15:00",
+    "arrival_time": "2026-07-08T21:15:00",
+    "passenger": {
+      "name": "Daniel Wagner",
+      "loyalty_tier": "Platinum",
+      "preferred_airline": "Air Sahara",
+      "seat_preference": "aisle",
+      "latest_acceptable_arrival": "2026-07-09T15:15:00"
+    },
+    "connection_departure": "2026-07-08T22:45:00",
+    "minimum_connection_minutes": 75
+  },
+  "TM-24662": {
+    "booking_id": "TM-24662",
+    "flight_number": "C4-265",
+    "origin": "CDG",
+    "destination": "DXB",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T22:00:00",
+    "arrival_time": "2026-07-09T09:20:00",
+    "passenger": {
+      "name": "Cristian Santos",
+      "loyalty_tier": "Gold",
+      "preferred_airline": "LionXpress",
+      "seat_preference": "window",
+      "latest_acceptable_arrival": "2026-07-09T22:20:00"
+    },
+    "connection_departure": "2026-07-09T10:05:00",
+    "minimum_connection_minutes": 45
+  },
+  "TM-87110": {
+    "booking_id": "TM-87110",
+    "flight_number": "SQ-562",
+    "origin": "JFK",
+    "destination": "ORD",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T09:15:00",
+    "arrival_time": "2026-07-08T14:15:00",
+    "passenger": {
+      "name": "Connie Lawrence",
+      "loyalty_tier": "Platinum",
+      "preferred_airline": "Singapore Airlines",
+      "seat_preference": "aisle",
+      "latest_acceptable_arrival": "2026-07-09T14:15:00"
+    },
+    "connection_departure": "2026-07-08T15:15:00",
+    "minimum_connection_minutes": 45
+  },
+  "TM-24322": {
+    "booking_id": "TM-24322",
+    "flight_number": "5K-846",
+    "origin": "SEA",
+    "destination": "HKG",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T07:00:00",
+    "arrival_time": "2026-07-08T09:20:00",
+    "passenger": {
+      "name": "Abigail Shaffer",
+      "loyalty_tier": "Silver",
+      "preferred_airline": "Hi Fly (5K)",
+      "seat_preference": "aisle",
+      "latest_acceptable_arrival": "2026-07-08T21:20:00"
+    },
+    "connection_departure": "2026-07-08T11:50:00",
+    "minimum_connection_minutes": 60
+  },
+  "TM-17665": {
+    "booking_id": "TM-17665",
+    "flight_number": "IP-848",
+    "origin": "SYD",
+    "destination": "NRT",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T21:15:00",
+    "arrival_time": "2026-07-09T02:35:00",
+    "passenger": {
+      "name": "Gina Moore",
+      "loyalty_tier": "Platinum",
+      "preferred_airline": "Island Spirit",
+      "seat_preference": "middle",
+      "latest_acceptable_arrival": "2026-07-10T01:35:00"
+    }
+  },
+  "TM-94607": {
+    "booking_id": "TM-94607",
+    "flight_number": "FA-833",
+    "origin": "SIN",
+    "destination": "AMS",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T16:15:00",
+    "arrival_time": "2026-07-08T22:35:00",
+    "passenger": {
+      "name": "Gabrielle Davis",
+      "loyalty_tier": "Gold",
+      "preferred_airline": "Epic Holiday",
+      "seat_preference": "window",
+      "latest_acceptable_arrival": "2026-07-09T14:35:00"
+    }
+  },
+  "TM-30374": {
+    "booking_id": "TM-30374",
+    "flight_number": "ZE-206",
+    "origin": "SYD",
+    "destination": "JFK",
+    "date": "2026-07-08",
+    "departure_time": "2026-07-08T10:30:00",
+    "arrival_time": "2026-07-08T13:30:00",
+    "passenger": {
+      "name": "Ryan Munoz",
+      "loyalty_tier": "Gold",
+      "preferred_airline": "Eastar Jet",
+      "seat_preference": "window",
+      "latest_acceptable_arrival": "2026-07-09T14:30:00"
+    },
+    "connection_departure": "2026-07-08T14:30:00",
+    "minimum_connection_minutes": 75
+  }
+}

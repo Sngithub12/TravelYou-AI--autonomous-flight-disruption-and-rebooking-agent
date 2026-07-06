@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TripMind AI Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">Agent run complete</p>
+          <h1>Rebooking cockpit</h1>
+        </div>
+        <a class="secondary-button" href="{{ url_for('index') }}">Run another scenario</a>
+      </section>
+
+      {% if error %}
+      <section class="panel">
+        <div class="panel-header">
+          <span>Run failed</span>
+          <strong>Something went wrong</strong>
+        </div>
+        <p class="reason">{{ error }}</p>
+      </section>
+
+      {% elif not result or not result.selection or not result.selection.selected %}
+      <section class="panel">
+        <div class="panel-header">
+          <span>Escalated</span>
+          <strong>No suitable itinerary found</strong>
+        </div>
+        <p class="reason">
+          {% if result and result.notification %}{{ result.notification }}{% else %}
+          The agent could not complete this run. Check logs/agent.log for details.
+          {% endif %}
+        </p>
+      </section>
+
+      {% else %}
+
+      <section class="status-strip">
+        <div>
+          <span>Scenario</span>
+          <strong>{{ result.scenario.name }}</strong>
+        </div>
+        <div>
+          <span>Status</span>
+          <strong>{{ result.status.status|title }}</strong>
+        </div>
+        <div>
+          <span>Severity</span>
+          <strong>{{ result.impact.severity|title }}</strong>
+        </div>
+        <div>
+          <span>Action</span>
+          <strong>{{ result.service_recovery.action }}</strong>
+        </div>
+      </section>
+
+      <section class="result-layout">
+        <div class="panel decision-panel">
+          <div class="panel-header">
+            <span>Selected itinerary</span>
+            <strong>{{ result.selection.selected.flight_number }}</strong>
+          </div>
+          <div class="ticket">
+            <div>
+              <small>{{ result.selection.selected.airline }}</small>
+              <strong>{{ result.booking.origin }} - {{ result.booking.destination }}</strong>
+            </div>
+            <div class="score-badge">
+              <span>Score</span>
+              <strong>{{ result.selection.selected.score }}</strong>
+            </div>
+          </div>
+          <dl class="data-grid wide">
+            <div>
+              <dt>Departure</dt>
+              <dd>{{ result.selection.selected.departure_time }}</dd>
+            </div>
+            <div>
+              <dt>Arrival</dt>
+              <dd>{{ result.selection.selected.arrival_time }}</dd>
+            </div>
+            <div>
+              <dt>New PNR</dt>
+              <dd>{{ result.service_recovery.new_pnr }}</dd>
+            </div>
+            <div>
+              <dt>Ticket</dt>
+              <dd>{{ result.service_recovery.ticket_status }}</dd>
+            </div>
+          </dl>
+          <div class="notification">
+            <span>Customer message</span>
+            <p>{{ result.notification }}</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <span>Impact analysis</span>
+            <strong>{{ result.service_recovery.voucher }}</strong>
+          </div>
+          <p class="reason">{{ result.impact.reason }} {{ result.status.reason }}</p>
+          <dl class="data-grid">
+            <div>
+              <dt>Delay</dt>
+              <dd>{{ result.status.delay_minutes }} min</dd>
+            </div>
+            <div>
+              <dt>Connection risk</dt>
+              <dd>{{ "Missed" if result.impact.missed_connection else "Protected" }}</dd>
+            </div>
+            <div>
+              <dt>Original buffer</dt>
+              <dd>{{ result.impact.connection_buffer_minutes }} min</dd>
+            </div>
+            <div>
+              <dt>Projected buffer</dt>
+              <dd>{{ result.impact.projected_buffer_minutes }} min</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <span>Ranked alternatives</span>
+          <strong>{{ result.selection.ranked_options|length }} options evaluated</strong>
+        </div>
+        <div class="option-grid">
+          {% for option in result.selection.ranked_options %}
+            <article class="option-card {% if loop.first %}selected{% endif %}">
+              <div class="option-top">
+                <div>
+                  <span>{{ option.airline }}</span>
+                  <strong>{{ option.flight_number }}</strong>
+                </div>
+                <div class="score-badge small">
+                  <span>Score</span>
+                  <strong>{{ option.score }}</strong>
+                </div>
+              </div>
+              <dl class="option-stats">
+                <div><dt>Arrival</dt><dd>{{ option.arrival_time }}</dd></div>
+                <div><dt>Stops</dt><dd>{{ option.stops }}</dd></div>
+                <div><dt>Seat</dt><dd>{{ option.seat_available }}</dd></div>
+                <div><dt>Cost</dt><dd>${{ option.price_delta }}</dd></div>
+              </dl>
+              <ul class="score-list">
+                {% for factor in option.score_factors %}
+                  <li>
+                    <span>{{ factor.label }}</span>
+                    <strong class="{{ 'positive' if factor.value >= 0 else 'negative' }}">{{ "%+.2f"|format(factor.value) }}</strong>
+                  </li>
+                {% endfor %}
+              </ul>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="panel">
+  <div class="panel-header">
+    <span>Trace</span>
+    <strong>Agent reasoning path</strong>
+  </div>
+  <ol class="tool-timeline compact">
+    {% for entry in result.trace %}
+      {% if entry.type in ['tool_call', 'reasoning', 'final'] %}
+        <li>
+          <span>{{ loop.index }}</span>
+          <strong>{{ entry.title }}</strong>
+          {% if entry.type == 'reasoning' %}<small>{{ entry.content }}</small>{% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</section>
+      {% endif %}
+    </main>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
